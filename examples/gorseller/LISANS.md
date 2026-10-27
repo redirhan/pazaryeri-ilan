@@ -1,7 +1,7 @@
 # Örnek görseller: lisans ve kaynak
 
 Bu klasördeki görseller **MIT lisansının kapsamında değildir**. Yalnız görsel kontrol örneği için konmuştur.
-Kaynak fotoğraflar Wikimedia Commons'tan, Creative Commons lisanslı. Redirhan Studio düzenledi
+Kaynak fotoğraflar Wikimedia Commons'tan, Creative Commons lisanslı. Redirhan Labs düzenledi
 (arka plan temizleme, beyaz zemin, gölge, kırpma). Örneklerdeki marka adları uydurmadır; ürünler o markalara ait değildir.
 
 | Dosya | Kaynak fotoğraf | Yazar | Lisans | Ne yapıldı |
@@ -14,8 +14,6 @@ Kaynak fotoğraflar Wikimedia Commons'tan, Creative Commons lisanslı. Redirhan 
 | `sabun_3_yasam.jpg` | aynı | Malene Thyssen | CC BY 2.5 | **Yapay zekâ ile üretilmiş sahne** (Google Gemini görüntü modeli) + gerçek sabun pikselleri sahneye geri konuldu. Dosyanın XMP verisinde `DigitalSourceType = compositeWithTrainedAlgorithmicMedia` yazar. |
 
 Paylaşırken: yazar adını ve lisansı belirt. CC BY-SA 4.0 görsellerin türevleri aynı lisansla paylaşılmalıdır.
-
-Ürün görseli hizmeti (beyaz zemin, ürün değişmeden): Instagram **@redirhanstudio**.
 
 `examples/seramik-kupa/cikti/hazir/*.jpg`: `kupa_2_kare_2000.jpg` dosyasından `gorsel_kontrol.py --hazirla` ile üretildi
 (yalnız beyaz tuvale yerleştirme); lisans CC BY-SA 4.0, yazar ArAr'Hani.

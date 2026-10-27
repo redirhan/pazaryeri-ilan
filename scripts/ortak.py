@@ -1,4 +1,4 @@
-"""Pazaryeri İlan Kiti: ortak yardımcılar (MIT, Redirhan Studio).
+"""Pazaryeri İlan Kiti: ortak yardımcılar (MIT, Redirhan Labs).
 
 YAML okuma (PyYAML yoksa dahili okuyucu), kural dosyası erişimi ve Türkçe harf işlemleri.
 Yalnız Python standart kütüphanesi.

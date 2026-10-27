@@ -5,7 +5,7 @@ hazırlasın: her platformun sınırına uygun başlık, öne çıkan maddeler, 
 görsel kontrol listesi ve toplu yükleme hazırlık tablosu. Görsel kontrol script'i fotoğraflarını ölçer: beyaz zemin,
 ürün doluluğu, çözünürlük, oran, dosya boyutu, yazı/logo şüphesi.
 
-Ücretsiz, MIT lisanslı. Redirhan Studio tarafından hazırlandı. Tamamen yerel çalışır: yayın yok, hesap yok,
+Ücretsiz, MIT lisanslı. Redirhan Labs tarafından hazırlandı. Tamamen yerel çalışır: yayın yok, hesap yok,
 ücretli API yok, tarayıcı yok. Hiçbir şeyi pazaryerine yüklemez; yüklemeyi sen yaparsın.
 
 ## Ne yapar?
@@ -101,12 +101,7 @@ Sabun yaşam görseli yapay zekâ ile üretilmiş bir sahnedir ve dosyasında bu
   her görsele gözle bak.
 - İndirim uyarısı bilgilendirme amaçlıdır, hukuki görüş değildir.
 
-## Ürün görseli hizmeti
-
-Fotoğrafların beyaz zemin kontrolünden geçmiyor mu? Telefonla çektiğin ürün fotoğrafını pazaryerine uygun beyaz zemin
-ve sahne görsellerine biz dönüştürelim; ürün, renk ve etiket değişmeden. Instagram: **@redirhanstudio**
-
 ## Lisans
 
-Kod ve kural dosyası: MIT (`LICENSE`), © 2026 Redirhan Studio. Örnek görseller: kendi CC lisansları
+Kod ve kural dosyası: MIT (`LICENSE`), © 2026 Redirhan Labs. Örnek görseller: kendi CC lisansları
 (`examples/gorseller/LISANS.md`).

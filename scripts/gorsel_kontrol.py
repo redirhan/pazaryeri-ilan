@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pazaryeri İlan Kiti: ürün görseli kontrolü (MIT, Redirhan Studio).
+"""Pazaryeri İlan Kiti: ürün görseli kontrolü (MIT, Redirhan Labs).
 
 Her görseli ölçer ve seçilen pazaryerinin kurallarıyla (rules/platformlar.yaml) karşılaştırır:
   - çözünürlük (en/boy, en az / en çok / önerilen), en-boy oranı, dosya boyutu ve türü, renk modu, saydamlık

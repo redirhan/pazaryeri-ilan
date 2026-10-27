@@ -5,7 +5,7 @@ Amazon.com.tr**: a title within each platform's limit, bullet features, a descri
 keywords, an image checklist and a bulk-upload prep sheet. An image checker measures every photo: white background,
 product fill, resolution, aspect ratio, file size and possible text/logo overlays.
 
-Free, MIT licensed, by Redirhan Studio. Runs fully locally: no publishing, no accounts, no paid APIs, no browser.
+Free, MIT licensed, by Redirhan Labs. Runs fully locally: no publishing, no accounts, no paid APIs, no browser.
 It never uploads anything to a marketplace; you do the upload. Output is in Turkish.
 
 ## What it does
@@ -72,11 +72,6 @@ See `examples/gorseller/LISANS.md`.
 - Image checks are heuristic. Text or watermarks on top of the product and fidelity to the real product need a human look.
 - The discount warning is information, not legal advice.
 
-## Product photo service
-
-Photos failing the white-background check? We turn phone photos into marketplace-ready white-background and lifestyle
-images without changing the product, colour or label. Instagram: **@redirhanstudio**
-
 ## Licence
 
-Code and rules: MIT (`LICENSE`), © 2026 Redirhan Studio. Example images: their own CC licences.
+Code and rules: MIT (`LICENSE`), © 2026 Redirhan Labs. Example images: their own CC licences.

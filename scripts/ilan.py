@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pazaryeri İlan Kiti (MIT, Redirhan Studio).
+"""Pazaryeri İlan Kiti (MIT, Redirhan Labs).
 
 Ürün bilgisi (urun.yaml) → Trendyol, Hepsiburada, n11 ve Amazon.com.tr için ilan taslağı:
 başlık (platform sınırı ve kalıbıyla), öne çıkan maddeler, açıklama (düz + HTML), özellik tablosu, arama kelimeleri,
