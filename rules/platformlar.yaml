@@ -1,0 +1,701 @@
+# Pazaryeri İlan Kiti: platform kuralları
+#
+# Her kural: deger + kaynak (URL ya da "yok: açıklama") + tarih (okunma, YYYY-AA-GG) + guven + isteğe bağlı not / dogrula.
+#   guven: resmi   = platformun kendi sayfası, API dokümanı ya da PDF'i
+#          ikincil = entegratör, ajans ya da blog sayfası
+#          tahmin  = bizim önerimiz ya da bir resmi değerden çıkarım
+# guven resmi değilse (ya da dogrula: evet ise) çıktıda "satıcı panelinden doğrula" yazar.
+# "dogrula: evet" olan resmi kurallar: resmi sayfa yalnız arama motoru özetinden okunabildi, sayfa eski ya da kaynaklar çelişiyor.
+# Kaynaklar çelişirse DAHA SIKI değer kodlandı ve "not" alanına yazıldı.
+# Satıcı paneli (giriş gerektiren sayfalar) okunmadı. Yüklemeden önce panelde kontrol edin.
+
+surum: "1.0.0"
+kural_tarihi: "2026-10-27"
+
+platformlar:
+  trendyol:
+    ad: "Trendyol"
+    kurallar:
+      baslik_max:
+        deger: 100
+        kaynak: https://developers.trendyol.com/v2.0/docs/product-create-createproducts
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "API alan tablosu: title string 100. v3.0 uluslararası doküman da 100 diyor. Resmi bir en az sınırı bulunamadı."
+      baslik_kalip:
+        deger: [cinsiyet, temel_ozellikler, urun_tipi, renk, miktar]
+        kaynak: https://akademi.trendyol.com/satici-bilgi-merkezi/detay/242
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "Resmi metin (arama özeti): ürün adı ürün üzerindeki şekliyle girilir; ebat, ağırlık, renk, ml/gram eklenebilir; yalnız ürünün kendi markası. Sıra bizim Türkçe kalıbımız (niteleyenler isimden önce)."
+      baslik_marka_notu:
+        deger: "Trendyol marka alanını ayrı tutar ve ürün sayfasında başlığın önünde gösterir; marka başlığa da yazılırsa çift görünebilir. Bu yüzden Trendyol kalıbında marka yok. Panel önizlemesinde kontrol et; markanın başlıkta olmasını istersen baslik_kalip'e 'marka' ekle."
+        kaynak: "yok: ürün sayfası gözlemi, resmi kural bulunamadı"
+        tarih: "2026-10-27"
+        guven: tahmin
+      not_baslik_icerik:
+        deger: "Başka marka adı yazma; yalnız ürünün kendi markası. Resmi yasaklı kelime listesi bulunamadı; kampanya/kargo/fiyat ifadeleri ve tamamı büyük harf yine de yazılmamalı (genel uygulama)."
+        kaynak: https://akademi.trendyol.com/satici-bilgi-merkezi/detay/242
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+      aciklama_max:
+        deger: 30000
+        kaynak: https://developers.trendyol.com/v2.0/docs/product-create-createproducts
+        tarih: "2026-10-27"
+        guven: resmi
+      aciklama_html:
+        deger: "evet"
+        kaynak: https://developers.trendyol.com/v2.0/docs/product-create-createproducts
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "description alan türü HTML-string."
+      not_aciklama_icerik:
+        deger: "Açıklamada kargo bilgisi, teslimat süresi, 'bize ulaşın' gibi iletişim satırları, video ya da dış bağlantı ve kampanya ifadesi olmaz. Ürünün içeriği, detayları, garanti durumu ve hammaddesi yazılır; gıdada etiket bilgisi."
+        kaynak: https://akademi.trendyol.com/satici-bilgi-merkezi/detay/242
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+        not: "Sayfa JavaScript ile açılıyor; arama motoru özetinden okundu."
+      madde_alani:
+        deger: "Trendyol'da ayrı 'madde' alanı yok (API alanlarında bulunmuyor). Öne çıkan maddeler açıklamanın başına liste olarak eklenir."
+        kaynak: https://developers.trendyol.com/v2.0/docs/product-create-createproducts
+        tarih: "2026-10-27"
+        guven: resmi
+      madde_adet:
+        deger: 5
+        kaynak: "yok: bizim önerimiz (açıklamadaki liste için)"
+        tarih: "2026-10-27"
+        guven: tahmin
+      arama_alani:
+        deger: "Ayrı arama kelimesi alanı yok. Alıcının arayacağı kelimeler başlıkta, açıklamada ve özellik değerlerinde doğal biçimde geçmeli."
+        kaynak: https://developers.trendyol.com/v2.0/docs/product-create-createproducts
+        tarih: "2026-10-27"
+        guven: resmi
+      not_barkod:
+        deger: "Barkod en çok 40 karakter; özel karakter olarak yalnız . - _ kullanılır. Model kodu (productMainId) en çok 40, stok kodu en çok 100 karakter. Aynı model koduna sahip barkodlar varyant olarak gruplanır."
+        kaynak: https://developers.trendyol.com/v2.0/docs/product-create-createproducts
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "İkincil kaynaklar barkod biçimi için farklı şeyler yazıyor (13-20 alfanümerik vb.)."
+      gorsel_adet_max:
+        deger: 8
+        kaynak: https://developers.trendyol.com/v2.0/docs/product-create-createproducts
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "Barkod başına en çok 8 görsel."
+      gorsel_min_px:
+        deger: "600x800"
+        kaynak: https://akademi.trendyol.com/satici-bilgi-merkezi/detay/242
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+        not: "Akademi (arama özeti): en az 600x800, 72 dpi. idifo (ikincil) 860x574 diyor; çelişki."
+      gorsel_onerilen_px:
+        deger: "1200x1800"
+        kaynak: https://developers.trendyol.com/v2.0/docs/product-create-createproducts
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "API: 1200x1800, 96 dpi."
+      gorsel_oran:
+        deger: "2:3"
+        kaynak: https://developers.trendyol.com/v2.0/docs/product-create-createproducts
+        tarih: "2026-10-27"
+        guven: tahmin
+        not: "Önerilen 1200x1800 ölçüsünden çıkarıldı (dikey 2:3)."
+      gorsel_max_px:
+        deger: "2000x2000"
+        kaynak: https://idifo.com/blog/trendyol-gorsel-kurallari/
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "Resmi kaynakta görülmedi."
+      gorsel_dosya_mb_max:
+        deger: 10
+        kaynak: https://akademi.trendyol.com/satici-bilgi-merkezi/detay/146
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+      gorsel_dosya_turleri:
+        deger: [JPEG, PNG]
+        kaynak: https://idifo.com/blog/trendyol-gorsel-kurallari/
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "idifo WebP de diyor; resmi kaynakta doğrulanmadı, WebP bu yüzden listede yok."
+      gorsel_zemin:
+        deger: beyaz_tercih
+        kaynak: https://idifo.com/blog/trendyol-gorsel-kurallari/
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "'Düz beyaz veya açık renkli arka plan tercih edilmelidir' (zorunlu saf beyaz değil). Birfatura da beyaz/nötr fon diyor."
+      gorsel_yazi:
+        deger: "Görselde filigran, fiyat/kampanya/kargo yazısı, ilgisiz logo, başka e-ticaret sitesi adı ve sağlık beyanı olmaz; görsel ürünün markası, ölçüsü ve rengiyle aynı olmalı; kendi ya da lisanslı fotoğraf"
+        kaynak: https://idifo.com/blog/trendyol-gorsel-kurallari/
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "Başka site adı, sağlık beyanı ve ürünle uyum Akademi detay/242'de (resmi, arama özeti); filigran ve fiyat yazısı yalnız ikincil kaynakta."
+      csv_kolonlar:
+        deger:
+          - kolon: "Barkod"
+            alan: barkod
+          - kolon: "Model Kodu"
+            alan: model_kodu
+          - kolon: "Marka"
+            alan: marka
+          - kolon: "Kategori"
+            alan: kategori
+          - kolon: "Para Birimi"
+            alan: para_birimi
+          - kolon: "Ürün Adı"
+            alan: baslik
+          - kolon: "Ürün Açıklaması"
+            alan: aciklama
+          - kolon: "Piyasa Satış Fiyatı (KDV Dahil)"
+            alan: liste_fiyati
+          - kolon: "Trendyol'da Satılacak Fiyat (KDV Dahil)"
+            alan: satis_fiyati
+          - kolon: "Ürün Stok Adedi"
+            alan: stok
+          - kolon: "Stok Kodu"
+            alan: stok_kodu
+          - kolon: "KDV Oranı"
+            alan: kdv
+          - kolon: "Desi"
+            alan: desi
+          - kolon: "Sevkiyat Süresi"
+            alan: hazirlik_gunu
+          - kolon: "Renk"
+            alan: renk
+          - kolon: "Beden"
+            alan: beden
+          - kolon: "Görsel 1"
+            alan: gorsel_1
+          - kolon: "Görsel 2"
+            alan: gorsel_2
+          - kolon: "Görsel 3"
+            alan: gorsel_3
+          - kolon: "Görsel 4"
+            alan: gorsel_4
+          - kolon: "Görsel 5"
+            alan: gorsel_5
+          - kolon: "Görsel 6"
+            alan: gorsel_6
+          - kolon: "Görsel 7"
+            alan: gorsel_7
+          - kolon: "Görsel 8"
+            alan: gorsel_8
+        kaynak: https://akademi.trendyol.com/satici-bilgi-merkezi/detay/146
+        tarih: "2026-10-27"
+        guven: tahmin
+        not: "Tam sütun başlıkları yalnız panelden indirilen kategori şablonunda görünür (Ürün > Toplu Ürün Yükleme; kırmızı başlıklar zorunlu, yeşil zeminli başlıklar özellik). Bu adlar zorunlu alan listesinden (birfatura) türetildi. Görseller şablonda bağlantı (URL) ister; tabloda dosya adı var, yükleyip bağlantıyı yapıştır."
+
+  hepsiburada:
+    ad: "Hepsiburada"
+    kurallar:
+      baslik_max:
+        deger: 150
+        kaynak: https://birfatura.com/hepsiburada-urun-yukleme-yollari/
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "Kaynaklar çelişiyor: birfatura (08.12.2025) 255, eticarethub ve sentos 150, bazıları kategoriye göre 150-255 diyor. Daha sıkı olan 150 kodlandı. Resmi sayfa (Akademi, geliştirici portalı) giriş istiyor ya da 403."
+      baslik_kalip:
+        deger: [marka, model, cinsiyet, temel_ozellikler, urun_tipi, renk, miktar]
+        kaynak: https://birfatura.com/hepsiburada-urun-yukleme-yollari/
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "Marka + ürün + temel özellik genel önerisi; sıra bizim Türkçe kalıbımız."
+      not_baslik_icerik:
+        deger: "Başlıkta aşırı büyük harf, emoji ve sembol olmaz; 'en uygun fiyat', 'kampanya', 'ücretsiz kargo' gibi ifadeler eklenemez."
+        kaynak: https://birfatura.com/hepsiburada-urun-yukleme-yollari/
+        tarih: "2026-10-27"
+        guven: ikincil
+      aciklama_html:
+        deger: "evet"
+        kaynak: https://birfatura.com/hepsiburada-urun-yukleme-yollari/
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "'HTML desteklenir; fakat agresif biçimlendirmeler önerilmez.' Açıklama için en çok uzunluk bulunamadı."
+      not_aciklama_icerik:
+        deger: "Teknik özellik tablosu beklenir; yanıltıcı ya da tıbbi iddia olmaz."
+        kaynak: https://birfatura.com/hepsiburada-urun-yukleme-yollari/
+        tarih: "2026-10-27"
+        guven: ikincil
+      madde_alani:
+        deger: "Ayrı madde alanı bulunamadı. Öne çıkan maddeler açıklamanın başına liste olarak eklenir."
+        kaynak: https://github.com/ksmylmz/hepsiburada
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "Üçüncü taraf API istemcisindeki alan listesinde madde alanı yok."
+      madde_adet:
+        deger: 5
+        kaynak: "yok: bizim önerimiz (açıklamadaki liste için)"
+        tarih: "2026-10-27"
+        guven: tahmin
+      arama_alani:
+        deger: "Ayrı arama kelimesi alanı bulunamadı. Kelimeler başlıkta, açıklamada ve özelliklerde doğal biçimde geçmeli."
+        kaynak: "yok: araştırmada alan bulunamadı (resmi sayfalar giriş istiyor)"
+        tarih: "2026-10-27"
+        guven: tahmin
+      not_marka_barkod:
+        deger: "Marka Hepsiburada'da onaylı olmalı. Çoğu kategoride barkod zorunlu; el yapımı ve kişiye özel ürünlerde istisna kategori yöneticisi onayı isteyebilir."
+        kaynak: https://birfatura.com/hepsiburada-urun-yukleme-yollari/
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "Marka onayı ecosire (23.03.2026) kaynağında da geçiyor."
+      gorsel_adet_max:
+        deger: 10
+        kaynak: https://developers.hepsiburada.com/hepsiburada/changelog/hepsiburada-entegrasyon-haziran-2025
+        tarih: "2026-10-22"
+        guven: resmi
+        dogrula: evet
+        not: "22.10.2026'da okundu, 27.10.2026'da 403. İkincil kaynaklar (ecosire, meayt) 8 diyor."
+      gorsel_min_px:
+        deger: "600x600"
+        kaynak: https://birfatura.com/hepsiburada-urun-yukleme-yollari/
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "Çelişki: meayt (02.10.2026) en az 500x500, birfatura 600x600 diyor. Daha sıkı olan kodlandı."
+      gorsel_onerilen_px:
+        deger: "1500x1500"
+        kaynak: https://www.meayt.com/blog/hepsiburada-urun-gorseli-boyutlari-ve-kurallari/
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "Önerilen 1500-2000 px, 1:1."
+      gorsel_oran:
+        deger: "1:1"
+        kaynak: https://www.meayt.com/blog/hepsiburada-urun-gorseli-boyutlari-ve-kurallari/
+        tarih: "2026-10-27"
+        guven: ikincil
+      gorsel_dosya_mb_max:
+        deger: 10
+        kaynak: https://www.meayt.com/blog/hepsiburada-urun-gorseli-boyutlari-ve-kurallari/
+        tarih: "2026-10-27"
+        guven: ikincil
+      gorsel_dosya_turleri:
+        deger: [JPEG, PNG]
+        kaynak: https://www.meayt.com/blog/hepsiburada-urun-gorseli-boyutlari-ve-kurallari/
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "birfatura yalnız JPG diyor."
+      gorsel_zemin:
+        deger: saf_beyaz
+        kaynak: https://www.meayt.com/blog/hepsiburada-urun-gorseli-boyutlari-ve-kurallari/
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "Ana görsel saf beyaz #FFFFFF."
+      gorsel_doluluk_min:
+        deger: 85
+        kaynak: https://www.meayt.com/blog/hepsiburada-urun-gorseli-boyutlari-ve-kurallari/
+        tarih: "2026-10-27"
+        guven: ikincil
+      gorsel_yazi:
+        deger: "Ana görselde yazı, logo, rozet ve filigran olmaz"
+        kaynak: https://www.meayt.com/blog/hepsiburada-urun-gorseli-boyutlari-ve-kurallari/
+        tarih: "2026-10-27"
+        guven: ikincil
+      csv_kolonlar:
+        deger:
+          - kolon: "Barcode"
+            alan: barkod
+          - kolon: "merchantSku"
+            alan: stok_kodu
+          - kolon: "VaryantGroupID"
+            alan: model_kodu
+          - kolon: "UrunAdi"
+            alan: baslik
+          - kolon: "UrunAciklamasi"
+            alan: aciklama
+          - kolon: "Marka"
+            alan: marka
+          - kolon: "GarantiSuresi"
+            alan: "ozellik:Garanti Süresi"
+          - kolon: "kg"
+            alan: desi
+          - kolon: "tax_vat_rate"
+            alan: kdv
+          - kolon: "renk_variant_property"
+            alan: renk
+          - kolon: "ebatlar_variant_property"
+            alan: beden
+          - kolon: "Image1"
+            alan: gorsel_1
+          - kolon: "Image2"
+            alan: gorsel_2
+          - kolon: "Image3"
+            alan: gorsel_3
+          - kolon: "Image4"
+            alan: gorsel_4
+          - kolon: "Image5"
+            alan: gorsel_5
+        kaynak: https://github.com/ksmylmz/hepsiburada
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "Ürün oluşturma (katalog) alan adları; üçüncü taraf API istemcisinden. Panel Excel şablonunun başlıkları farklı olabilir. Fiyat ve stok bu listede yok: ürün kataloğa girdikten sonra ayrı listeleme adımında girilir (panelden doğrula). Aynı VaryantGroupID varyantları gruplar; 'kg' alanına desi değil ağırlık yazılmalı, doldurmadan önce kontrol et."
+
+  n11:
+    ad: "n11"
+    kurallar:
+      baslik_max:
+        deger: 65
+        kaynak: https://magazadestek.n11.com/sss/621
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+        not: "Panel/Excel: başlık ve alt başlık 15-65 karakter (arama özeti, sayfa eski). API 255'e kadar kabul ediyor (developer.n11.com hata mesajları); daha sıkı olan 65 kodlandı. Kalite puanında 31-65 karakter puan düşürmez."
+      baslik_min:
+        deger: 15
+        kaynak: https://developer.n11.com/documentation/bilgilendirme/api-hata-mesajlari-ve-aciklamalari/
+        tarih: "2026-10-27"
+        guven: resmi
+      baslik_onerilen_min:
+        deger: 31
+        kaynak: https://magazadestek.n11.com/satis-surecleri/ilan-kalite-puani-hesaplamasi-42
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+        not: "İlan kalite puanı: 1-20 karakter -5, 21-30 karakter -3, 31-65 puan düşmez (arama özeti)."
+      baslik_kalip:
+        deger: [marka, model, cinsiyet, temel_ozellikler, urun_tipi, renk, miktar]
+        kaynak: https://magazadestek.n11.com/satis-ipuclari/satis-arttiran-urun-ilanlari-7
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+        not: "'Başlıkta marka ve model isimleri mutlaka bulunmalı'; cinsiyet, kullanım ve kod eklenebilir; tamamı büyük harf olmaz (arama özeti)."
+      alt_baslik_max:
+        deger: 65
+        kaynak: https://magazadestek.n11.com/sss/621
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+        not: "Alt başlık önemli bir özelliği taşıyabilir; ipucu sayfası kampanya da yazılabilir diyor, ama reklam kuralları için kampanyayı panelden tanımlamanı öneririz."
+      not_baslik_icerik:
+        deger: "Yasaklı kelime içeren ürün adı reddedilir ('Ürün Adı alanında X sözcükleri kullanılamaz'). Liste yayımlanmıyor."
+        kaynak: https://developer.n11.com/documentation/bilgilendirme/api-hata-mesajlari-ve-aciklamalari/
+        tarih: "2026-10-27"
+        guven: resmi
+      aciklama_html:
+        deger: "evet"
+        kaynak: https://developer.n11.com/documentation/n11-marketplace-entegrasyonu/urun-yukleme/
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "description zorunlu, HTML-string; kapanmamış çok sayıda HTML etiketi ve yasaklı kelime reddedilir. En çok uzunluk yazmıyor."
+      madde_alani:
+        deger: "Ayrı madde alanı yok (API alanlarında bulunmuyor); öne çıkan maddeler açıklamanın başına liste olarak eklenir. Alt başlık bir özelliği öne çıkarmak için kullanılabilir."
+        kaynak: https://developer.n11.com/documentation/n11-marketplace-entegrasyonu/urun-yukleme/
+        tarih: "2026-10-27"
+        guven: resmi
+      madde_adet:
+        deger: 5
+        kaynak: "yok: bizim önerimiz (açıklamadaki liste için)"
+        tarih: "2026-10-27"
+        guven: tahmin
+      arama_alani:
+        deger: "Ayrı arama kelimesi alanı bulunamadı. Kelimeler başlıkta, alt başlıkta, açıklamada ve özelliklerde doğal biçimde geçmeli."
+        kaynak: https://developer.n11.com/documentation/n11-marketplace-entegrasyonu/urun-yukleme/
+        tarih: "2026-10-27"
+        guven: resmi
+      not_marka_barkod:
+        deger: "Marka zorunlu (özellik olarak girilir). Barkod isteğe bağlı; yalnız ulusal barkodlar kaydedilir, aynı barkod tekrar reddedilir."
+        kaynak: https://developer.n11.com/documentation/n11-marketplace-entegrasyonu/urun-yukleme/
+        tarih: "2026-10-27"
+        guven: resmi
+      gorsel_adet_min:
+        deger: 6
+        kaynak: https://magazadestek.n11.com/satis-ipuclari/satis-arttiran-urun-ilanlari-7
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+        not: "Satış ipucu: 'en az 6 ürün fotoğrafı'. Zorunluluk değil, öneri."
+      gorsel_adet_max:
+        deger: 10
+        kaynak: https://magazadestek.n11.com/sss/621
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+        not: "Eski SSS özeti: 'maksimum 2 MB ve 10 görsel'. API sayfası adet yazmıyor."
+      gorsel_dosya_mb_max:
+        deger: 10
+        kaynak: https://developer.n11.com/documentation/n11-marketplace-entegrasyonu/urun-yukleme/
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "API sayfası (26.05.2022 tarihli): en çok 10 MB. Eski SSS 2 MB diyordu; büyük dosyada sorun olursa 2 MB altına indir."
+      gorsel_zemin:
+        deger: duz_temiz
+        kaynak: https://magazadestek.n11.com/satis-ipuclari/satis-arttiran-urun-ilanlari-7
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+        not: "Düz ve temiz zemin; tekstilde canlı manken önerilir. Piksel kuralları Excel şablonunun 'Görsel Standartları' sayfasında (giriş gerekir)."
+      gorsel_onerilen_px:
+        deger: "1200x1800"
+        kaynak: "yok: n11 piksel kuralı bulunamadı; Trendyol ölçüsü öneri olarak kullanıldı"
+        tarih: "2026-10-27"
+        guven: tahmin
+      csv_kolonlar:
+        deger:
+          - kolon: "title"
+            alan: baslik
+          - kolon: "description"
+            alan: aciklama
+          - kolon: "productMainId"
+            alan: model_kodu
+          - kolon: "stockCode"
+            alan: stok_kodu
+          - kolon: "barcode"
+            alan: barkod
+          - kolon: "quantity"
+            alan: stok
+          - kolon: "salePrice"
+            alan: satis_fiyati
+          - kolon: "listPrice"
+            alan: liste_fiyati
+          - kolon: "vatRate"
+            alan: kdv
+          - kolon: "currencyType"
+            alan: para_birimi
+          - kolon: "preparingDay"
+            alan: hazirlik_gunu
+          - kolon: "Marka"
+            alan: marka
+          - kolon: "Renk"
+            alan: renk
+          - kolon: "Beden"
+            alan: beden
+          - kolon: "image1"
+            alan: gorsel_1
+          - kolon: "image2"
+            alan: gorsel_2
+          - kolon: "image3"
+            alan: gorsel_3
+          - kolon: "image4"
+            alan: gorsel_4
+          - kolon: "image5"
+            alan: gorsel_5
+          - kolon: "image6"
+            alan: gorsel_6
+        kaynak: https://developer.n11.com/documentation/n11-marketplace-entegrasyonu/urun-yukleme/
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+        not: "API alan adları (product-create, skus[]). Panel Excel şablonunun başlıkları farklıdır (mor başlıklar zorunlu, gri isteğe bağlı; 'Ürün Özellik Bilgileri' sayfasındaki değerler birebir kopyalanmalı). currencyType TL/USD/EUR; vatRate 0/1/10/20; para birimi TRY ise TL yaz."
+
+  amazon:
+    ad: "Amazon.com.tr"
+    kurallar:
+      baslik_max:
+        deger: 200
+        kaynak: https://sellercentral.amazon.com.tr/seller-forums/discussions/t/3b5faa11-0969-44b3-bfbc-b9ceb4683bb3
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "Satıcı forumu duyurusu (21.01.2025): çoğu kategoride boşluklar dahil 200 karakter. 2018 giyim kılavuzu: ana ürün 60, alt ürün 150 karakter; kategori kılavuzunu kontrol et."
+      baslik_kalip:
+        deger: [marka, cinsiyet, temel_ozellikler, urun_tipi, model, ",", renk, ",", miktar, beden]
+        kaynak: https://m.media-amazon.com/images/G/41/rainier/help/Amazon_TR_Apparel_StyleGuide.pdf
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+        not: "Giyim kılavuzu (Mart 2018): [marka]+[hedef grup]+[tarz]+[ürün ismi]+[model]+...; her kelimenin ilk harfi büyük; sayılar rakamla. Diğer kategoriler için kategori kılavuzuna bak."
+      baslik_yasak_karakterler:
+        deger: ["!", "$", "?", "_", "{", "}", "^", "¬", "¦"]
+        kaynak: https://sellercentral.amazon.com.tr/seller-forums/discussions/t/3b5faa11-0969-44b3-bfbc-b9ceb4683bb3
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "Markanın parçası değilse yasak. Aynı kelime en çok 2 kez (edat, bağlaç hariç)."
+      not_baslik_icerik:
+        deger: "Tamamı büyük harf, fiyat, anahtar kelime yığını, 'Mükemmel Ürün', 'En Çok Satan', 'İndirim', 'Ücretsiz Kargo', 'Harika Hediye' gibi ifadeler ve ! * £ ? % tırnak işaretleri başlıkta olmaz."
+        kaynak: https://m.media-amazon.com/images/G/41/rainier/help/Amazon_TR_Apparel_StyleGuide.pdf
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+        not: "2018 giyim kılavuzu. '%' yasağı giyim kılavuzunda; '%100 pamuk' gibi kullanımda kategori kılavuzunu kontrol et."
+      madde_alani:
+        deger: "Ayrı 'madde işaretleri' alanları var: temel özellikleri ve avantajları vurgulayan kısa, açıklayıcı cümleler."
+        kaynak: https://m.media-amazon.com/images/G/41/SOA/tr2us/TR2US_Listing_merged.pdf
+        tarih: "2026-10-27"
+        guven: resmi
+      madde_adet:
+        deger: 5
+        kaynak: https://sellercentral.amazon.com/seller-forums/discussions/t/9111caef2f97480b89e43c87aa40fdb9
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "5 madde ve madde başına 500 karakter ABD kaynaklı (digipeak, sellersprite, bqool); .com.tr için doğrulanmadı."
+      madde_max:
+        deger: 500
+        kaynak: https://sellercentral.amazon.com/seller-forums/discussions/t/9111caef2f97480b89e43c87aa40fdb9
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "Okunabilirlik için 150-250 karakter önerilir (bizim önerimiz)."
+      aciklama_html:
+        deger: "hayir"
+        kaynak: https://m.media-amazon.com/images/G/41/rainier/help/Amazon_TR_Apparel_StyleGuide.pdf
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "Giyim kılavuzu: tam cümleler, liste yok; satıcıya özel bilgi, fiyat ve teslimat yok. Amazon'un 2023 SEO blogu HTML diyor; düz metin daha güvenli olduğu için düz metin üretilir."
+      aciklama_liste:
+        deger: "hayir"
+        kaynak: https://m.media-amazon.com/images/G/41/rainier/help/Amazon_TR_Apparel_StyleGuide.pdf
+        tarih: "2026-10-27"
+        guven: resmi
+        dogrula: evet
+        not: "'Tam cümleler, liste değil' (2018 giyim kılavuzu)."
+      aciklama_max:
+        deger: 2000
+        kaynak: "yok: ikincil kaynaklarda geçen sayı; resmi .com.tr kaynağında bulunamadı"
+        tarih: "2026-10-27"
+        guven: ikincil
+      arama_terimi_bayt:
+        deger: 250
+        kaynak: https://sellercentral.amazon.com/seller-forums/discussions/t/9111caef2f97480b89e43c87aa40fdb9
+        tarih: "2026-10-27"
+        guven: ikincil
+        not: "ABD yardım sayfasından alıntı: 250 bayttan az, 249 bayttan sonrası kesilir. .com.tr için doğrulanmadı. TR giyim kılavuzu: başlığı tekrarlama, çoğul/varyant yazma, öznel sıfat, genel terim, başka marka yazma."
+      not_gtin:
+        deger: "Kabul edilen barkodlar: 8 ya da 13 haneli EAN, 14 haneli GTIN, 12 haneli UPC, ISBN ya da ASIN; GS1 ile kontrol edilir. Barkodsuz ürün için GTIN muafiyeti başvurusu gerekir."
+        kaynak: https://m.media-amazon.com/images/G/41/Seller-University/ListelemeYapabilmekIcinGerekliBilgiler.pdf
+        tarih: "2026-10-27"
+        guven: resmi
+      gorsel_adet_max:
+        deger: 9
+        kaynak: https://m.media-amazon.com/images/G/41/Seller-University/ListelemeYapabilmekIcinGerekliBilgiler.pdf
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "1 ana + 8 ek görsel."
+      gorsel_uzun_kenar_min:
+        deger: 500
+        kaynak: https://m.media-amazon.com/images/G/41/Seller-University/ListelemeYapabilmekIcinGerekliBilgiler.pdf
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "Uzun kenarı 500 px altı reddedilir; TR2US PDF kısa kenar için de en az 500 px diyor."
+      gorsel_zoom_px:
+        deger: 1000
+        kaynak: https://m.media-amazon.com/images/G/41/Seller-University/ListelemeYapabilmekIcinGerekliBilgiler.pdf
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "En az 1000 px (yakınlaştırma)."
+      gorsel_max_px:
+        deger: "10000x10000"
+        kaynak: https://m.media-amazon.com/images/G/41/SOA/tr2us/TR2US_Listing_merged.pdf
+        tarih: "2026-10-27"
+        guven: resmi
+      gorsel_onerilen_px:
+        deger: "2000x2000"
+        kaynak: "yok: Amazon sabit ölçü vermiyor; kare 2000 px bizim önerimiz (yakınlaştırma sınırının üstünde)"
+        tarih: "2026-10-27"
+        guven: tahmin
+      gorsel_dosya_turleri:
+        deger: [JPEG, TIFF, GIF, PNG]
+        kaynak: https://m.media-amazon.com/images/G/41/Seller-University/ListelemeYapabilmekIcinGerekliBilgiler.pdf
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "PNG giyim kılavuzundan."
+      gorsel_zemin:
+        deger: saf_beyaz
+        kaynak: https://m.media-amazon.com/images/G/41/Seller-University/ListelemeYapabilmekIcinGerekliBilgiler.pdf
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "Ana görsel saf beyaz (RGB 255,255,255)."
+      gorsel_doluluk_min:
+        deger: 85
+        kaynak: https://m.media-amazon.com/images/G/41/Seller-University/ListelemeYapabilmekIcinGerekliBilgiler.pdf
+        tarih: "2026-10-27"
+        guven: resmi
+        not: "'Ürün, görselin %85'ini ya da daha fazlasını doldurmalıdır.' Script bunu ürünün uzun kenar doluluğu olarak ölçer."
+      gorsel_yazi:
+        deger: "Ana görselde metin, logo, filigran olmaz; görsellerde 'ücretsiz kargo', yıldız puanı, 'Çok satan' ya da Amazon rozeti olmaz"
+        kaynak: https://m.media-amazon.com/images/G/41/SOA/tr2us/TR2US_Listing_merged.pdf
+        tarih: "2026-10-27"
+        guven: resmi
+      csv_kolonlar:
+        deger:
+          - kolon: "item_sku"
+            alan: stok_kodu
+          - kolon: "item_name"
+            alan: baslik
+          - kolon: "brand_name"
+            alan: marka
+          - kolon: "external_product_id"
+            alan: barkod
+          - kolon: "external_product_id_type"
+            alan: barkod_turu
+          - kolon: "product_description"
+            alan: aciklama
+          - kolon: "bullet_point1"
+            alan: madde_1
+          - kolon: "bullet_point2"
+            alan: madde_2
+          - kolon: "bullet_point3"
+            alan: madde_3
+          - kolon: "bullet_point4"
+            alan: madde_4
+          - kolon: "bullet_point5"
+            alan: madde_5
+          - kolon: "generic_keywords"
+            alan: arama_terimleri
+          - kolon: "color_name"
+            alan: renk
+          - kolon: "size_name"
+            alan: beden
+          - kolon: "standard_price"
+            alan: satis_fiyati
+          - kolon: "quantity"
+            alan: stok
+          - kolon: "main_image_url"
+            alan: gorsel_1
+          - kolon: "other_image_url1"
+            alan: gorsel_2
+          - kolon: "other_image_url2"
+            alan: gorsel_3
+          - kolon: "other_image_url3"
+            alan: gorsel_4
+        kaynak: https://m.media-amazon.com/images/G/41/SOA/tr2us/TR2US_Listing_merged.pdf
+        tarih: "2026-10-27"
+        guven: tahmin
+        not: "Toplu yükleme: Katalog > Ürünleri Yükleyerek Ekle > kategori şablonu (kırmızı hücreler zorunlu; 'Create or Replace', ürün türü, barkod türü EAN/GTIN/UPC/'GTIN Exempt'). Bu sütun anahtarları yaygın 'flat file' adlarıdır; .com.tr şablonunda bu oturumda görülmedi."
+
+ortak:
+  yasak_baslik_ifadeleri:
+    deger: ["indirim", "indirimli", "kampanya", "ücretsiz kargo", "kargo bedava", "bedava kargo", "aynı gün kargo", "hızlı kargo", "fırsat", "en uygun fiyat", "en ucuz", "en iyi", "en çok satan", "çok satan", "mükemmel ürün", "harika hediye", "son gün", "stoklarla sınırlı", "sınırlı stok", "orijinal ürün", "r:\\d+\\s?tl\\b"]
+    kaynak: https://m.media-amazon.com/images/G/41/rainier/help/Amazon_TR_Apparel_StyleGuide.pdf
+    tarih: "2026-10-27"
+    guven: ikincil
+    not: "Amazon giyim kılavuzu (resmi), Hepsiburada (birfatura, ikincil) ve Trendyol Akademi (kampanya ifadesi, arama özeti) birleştirildi. Liste genişletilebilir: sonu $ = tam kelime, r: = düzenli ifade (işaretsiz küçük harfe çevrilmiş metinde)."
+  yasak_iletisim_ifadeleri:
+    deger: ["whatsapp", "telegram", "bize ulaşın", "bize ulasin", "iletişime geçin", "dm at", "dm atın", "dmden", "mesaj atın", "bizi arayın", "sitemizden", "web sitemiz", "instagram sayfamız", "profilimizdeki link"]
+    kaynak: https://akademi.trendyol.com/satici-bilgi-merkezi/detay/242
+    tarih: "2026-10-27"
+    guven: ikincil
+    not: "Trendyol: 'bize ulaşın' satırları ve dış bağlantı yasak (resmi, arama özeti). Kelime listesi bizim."
+  diger_platform_adlari:
+    deger: ["trendyol", "hepsiburada", "n11$", "amazon", "çiçeksepeti", "ciceksepeti", "pttavm", "etsy", "shopier", "dolap", "sahibinden", "gittigidiyor", "instagram", "facebook", "tiktok"]
+    kaynak: https://akademi.trendyol.com/satici-bilgi-merkezi/detay/242
+    tarih: "2026-10-27"
+    guven: ikincil
+    not: "Trendyol görsellerinde başka e-ticaret sitesi adı yasak (resmi, arama özeti); metinler için de aynı uygulanır (genel uygulama)."
+  belge_gerektiren_iddialar:
+    deger: ["doğal$", "%100 doğal", "organik", "antibakteriyel", "antiseptik", "hipoalerjenik", "dermatolojik", "klinik olarak", "tedavi", "iyileştirir", "şifa", "kimyasal içermez", "katkısız", "vegan$", "glutensiz", "zayıflatır", "kanser"]
+    kaynak: https://akademi.trendyol.com/satici-bilgi-merkezi/detay/242
+    tarih: "2026-10-27"
+    guven: tahmin
+    not: "Trendyol görsellerinde sağlık beyanı yasak (resmi, arama özeti); Hepsiburada tıbbi iddia yasak (ikincil). Kelime listesi bizim; belgesi olan satıcı kullanabilir."
+  ustunluk_iddialari:
+    deger: ["en iyi", "en ucuz", "en kaliteli", "en çok satan", "1 numara", "bir numara", "türkiye'nin en", "piyasanın en", "rakipsiz", "lider marka", "eşsiz"]
+    kaynak: https://www.resmigazete.gov.tr/eskiler/2015/01/20150110-5.htm
+    tarih: "2026-10-27"
+    guven: resmi
+    not: "Ticari Reklam ve Haksız Ticari Uygulamalar Yönetmeliği md.9: iddialar ispatlanabilir olmalı. Reklam Etiketi Kontrolü KRS-03 ile aynı liste."
+  indirim_ifadeleri:
+    deger: ["indirim", "indirimli", "kampanya", "fırsat", "r:\\d+\\s?tl yerine", "yerine sadece", "stoklarla sınırlı", "son gün", "kaçırma", "üstü çizili", "r:%\\s?\\d+\\s?(indirim|off)", "r:(indirim|off)\\s?%\\s?\\d+"]
+    kaynak: https://www.resmigazete.gov.tr/eskiler/2026/07/20260701-9.htm
+    tarih: "2026-10-27"
+    guven: resmi
+    not: "RG 01.07.2026 / 33297 (yürürlük 01.08.2026), md.14: indirimden önceki fiyat = indirim başlangıcından önceki 10 günde uygulanan en düşük fiyat (14/3), yalnız aynı satış kanalı (14/5). Kelime listesi bizim."
+  kategori_ozellikleri:
+    deger:
+      kozmetik: ["Ağırlık/Hacim", "İçindekiler", "Cilt Tipi", "Menşei", "Raf Ömrü"]
+      giyim: ["Materyal", "Kalıp", "Yaka Tipi", "Kol Boyu", "Desen", "Yaş Grubu", "Beden"]
+      ev_mutfak: ["Materyal", "Hacim/Ölçüler", "Renk", "Bulaşık Makinesi", "Menşei"]
+      taki_aksesuar: ["Materyal", "Ölçüler", "Renk"]
+      gida: ["İçindekiler", "Net Miktar/Ağırlık", "Son Tüketim Tarihi", "Saklama Koşulları", "Menşei"]
+    kaynak: "yok: bizim kontrol listemiz; zorunlu alanlar kategori şablonunda değişir"
+    tarih: "2026-10-27"
+    guven: tahmin
+    not: "Trendyol açıklamada içerik, detay, garanti ve hammadde ister (Akademi detay/242, resmi, arama özeti)."

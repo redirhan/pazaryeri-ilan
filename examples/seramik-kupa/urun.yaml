@@ -1,0 +1,64 @@
+# KURGUSAL ÖRNEK: marka, barkod ve fiyatlar uydurmadır. Görseller: ../gorseller/LISANS.md
+# Durum: el yapımı seramik kupa, indirim yok. Üçüncü görsel bilerek hatalı (küçük, üstünde yazı var).
+marka: "Kilnora Seramik"
+urun_tipi: "kupa"
+model: "Desen Serisi"
+kategori: "Ev & Yaşam > Mutfak > Kupa & Bardak"
+kategori_grubu: ev_mutfak
+temel_ozellikler:
+  - "el yapımı"
+  - "seramik"
+  - "zürafa desenli"
+  - "kulplu"
+renk: "siyah beyaz"
+miktar: "350 ml"
+model_kodu: "KLN-KUPA-ZRF"
+barkod: "2000000200019"
+stok_kodu: "KLN-ZRF-350"
+stok: 12
+fiyat:
+  satis: 420
+  kdv: 20
+  para_birimi: TRY
+desi: 2
+hazirlik_gunu: 3
+ozellikler:
+  Materyal: "Seramik (sırlı)"
+  Hacim: "350 ml"
+  Ölçüler: "Yükseklik 9,5 cm, çap 8,5 cm"
+  Desen: "Zürafa deseni, elde boyama"
+  Bulaşık Makinesi: "Uygun (üst sepet önerilir)"
+  Mikrodalga: "Uygun değil"
+  Adet: "1"
+  Menşei: "Türkiye"
+one_cikanlar:
+  - "Atölyede elde şekillendirilir ve boyanır; her kupanın deseni biraz farklıdır"
+  - "350 ml hacim; kahve, çay ve bitki çayı için"
+  - "Sırlı yüzey, bulaşık makinesinin üst sepetinde yıkanabilir"
+  - "Kalın gövde içeceği daha uzun sıcak tutar, tutması rahat geniş kulp"
+  - "Darbeye karşı köşe korumalı kutuda gönderilir"
+aciklama: |
+  Kilnora Seramik Desen Serisi kupa, atölyede elde şekillendirilip zürafa desenli el boyamayla tamamlanır. Beyaz zemin üzerindeki siyah desen ve siyah kulp her kupada biraz farklı düşer; el yapımı olmasının işareti budur.
+
+  350 ml hacmiyle kahve, çay ve bitki çayı için uygun bir boydadır. Kalın seramik gövde içeceği daha uzun sıcak tutar, geniş kulp parmaklara rahat oturur.
+
+  Sırlı yüzey bulaşık makinesinin üst sepetinde yıkanabilir. Metal süsleme olmasa da sırrın ömrü için mikrodalgada kullanılmasını önermiyoruz.
+kullanim: "İlk kullanımdan önce ılık suyla yıka. Kaynar suyu dökmeden önce kupayı ılık suyla ısıtmak çatlama riskini azaltır."
+bakim: "Bulaşık makinesinin üst sepetinde ya da elde yıka. Aşındırıcı sünger kullanma."
+paket_icerigi:
+  - "1 adet seramik kupa (350 ml)"
+uyarilar: "El yapımıdır; desen, ölçü ve renkte küçük farklar olabilir. Ani sıcaklık değişiminden koru."
+anahtar_kelimeler:
+  - "el yapımı kupa"
+  - "seramik kupa"
+  - "desenli kupa"
+  - "kahve kupası"
+  - "çay kupası"
+  - "hediyelik kupa"
+  - "zürafa desenli kupa"
+  - "büyük kupa"
+gorseller:
+  - "../gorseller/kupa_1_beyaz_fon.jpg"
+  - "../gorseller/kupa_2_kare_2000.jpg"
+  - "../gorseller/kupa_3_hatali_ornek.jpg"
+platformlar: [trendyol, hepsiburada, n11, amazon]

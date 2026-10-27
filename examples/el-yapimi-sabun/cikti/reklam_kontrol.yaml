@@ -1,0 +1,64 @@
+# Reklam Etiketi Kontrolü girdisi: Pazaryeri İlan Kiti üretti.
+# Çalıştır: python3 ~/.claude/skills/reklam-etiketi/scripts/kontrol.py reklam_kontrol.yaml  (https://github.com/redirhan/reklam-etiketi)
+# Not: satıcının kendi pazaryeri ilanı. Etiket (ETK-*) maddeleri etkileyici reklamları içindir; burada indirim (FYT-*)
+# ve üstünlük/karşılaştırma (KRS-*) maddelerine bak. Bu bir hukuki görüş değildir.
+platform: diger
+bicim: gonderi
+hesap_turu: marka_kendi
+yayin_tarihi: "2026-11-03"
+ticari_iliski: hayir
+reklam_veren: "Lavora Atölye"
+urun_kategorisi: kozmetik
+aciklama: |
+  El Yapımı Soğuk İşlem Kokusuz Hassas Cilt için Zeytinyağlı Sabun 100 g
+  Lavora Atölye zeytinyağlı sabunu, zeytinyağı ağırlıklı bir tarifle soğuk işlem yöntemiyle küçük partiler halinde üretilir ve elde kesilir. Her kalıp yaklaşık 100 gramdır; el yapımı olduğu için kalıplar arasında küçük şekil ve renk farkları olabilir.
+  
+  Esans ve renklendirici eklemedik. Kokusuz bir sabun arayanlar ve sade içerik isteyenler için hazırlandı. Kalıplar en az 6 hafta kürlendiği için serttir ve günlük kullanımda yavaş erir.
+  
+  Sabunu kuru bir sabunlukta tutman ömrünü uzatır. Islak zeminde bekleyen sabun yumuşar.
+  
+  Öne çıkan özellikler
+  - Soğuk işlemle küçük partilerde üretilir, elde kesilir; her kalıp yaklaşık 100 g
+  - Zeytinyağı ağırlıklı formül; esans ve renklendirici eklenmedi
+  - En az 6 hafta kürlenir; sert kalıp olduğu için yavaş erir
+  - Plastiksiz kraft kâğıt ambalajda gönderilir
+  - El ve vücut için; ilk kullanımda dirseğin iç kısmında dene
+  
+  Ürün özellikleri
+  - Marka: Lavora Atölye
+  - Ağırlık: 100 g
+  - İçindekiler: Sodium Olivate, Sodium Cocoate, Aqua, Glycerin, Sodium Castorate
+  - Cilt Tipi: Tüm cilt tipleri
+  - Koku: Kokusuz (esans eklenmedi)
+  - Kullanım Alanı: El ve vücut
+  - Form: Katı kalıp
+  - Menşei: Türkiye
+  - Raf Ömrü: 24 ay
+  
+  Kullanım
+  Islak cilde köpürterek uygula, bol suyla durula. Göz çevresinde kullanma.
+  
+  Bakım
+  Kullanımdan sonra suyu süzülen bir sabunlukta, kuru yerde sakla.
+  
+  Paket içeriği
+  - 1 adet zeytinyağlı sabun (yaklaşık 100 g)
+  - Kraft kâğıt ambalaj
+  
+  Uyarılar
+  Haricen kullanılır. Göze kaçarsa bol suyla yıka. Tahriş olursa kullanmayı bırak.
+ekran_yazilari: []
+yapay_zeka:
+  kullanildi: hayir
+  neler: []
+  gercek_kisi_kopyasi: hayir
+indirim:
+  indirimli_fiyat: 149.9
+  onceki_fiyat: 189.9
+  son_10_gun_en_dusuk: 169.9
+  baslangic: "2026-11-03"
+  bitis: "2026-11-10"
+  stok_adedi: 
+  urun_turu: mal
+  satis_kanali: "trendyol"
+  onceki_fiyat_kanali: "trendyol"

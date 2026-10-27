@@ -1,0 +1,284 @@
+{
+  "gorseller": [
+    {
+      "dosya": "../gorseller/kupa_3_hatali_ornek.jpg",
+      "ad": "kupa_3_hatali_ornek.jpg",
+      "dosya_kb": 56.9,
+      "tur": "JPEG",
+      "mod": "RGB",
+      "dpi": null,
+      "genislik": 560,
+      "yukseklik": 840,
+      "oran": 0.6667,
+      "saydam": false,
+      "kenar_saf_beyaz_yuzde": 99.2,
+      "kenar_beyaza_yakin_yuzde": 100.0,
+      "kenar_ortalama": [
+        255,
+        255,
+        255
+      ],
+      "on_plan_yuzde": 34.0,
+      "urun_kutusu": [
+        42,
+        189,
+        521,
+        635
+      ],
+      "doluluk_uzun_kenar_yuzde": 85.7,
+      "doluluk_alan_yuzde": 45.6,
+      "merkez_kayma_yuzde": [
+        0.3,
+        -1.0
+      ],
+      "kenara_degiyor": [],
+      "arka_plan_saf_beyaz_yuzde": 89.4,
+      "ayrik_ogeler": [
+        {
+          "kutu": [
+            15,
+            15,
+            252,
+            81
+          ],
+          "alan_yuzde": 3.08
+        },
+        {
+          "kutu": [
+            330,
+            804,
+            525,
+            825
+          ],
+          "alan_yuzde": 0.58
+        }
+      ],
+      "netlik": 1213.4
+    }
+  ],
+  "platformlar": {
+    "trendyol": {
+      "set": [
+        {
+          "kontrol": "Görsel sayısı (en çok)",
+          "durum": "GECTI",
+          "mesaj": "1 görsel; en çok 8"
+        }
+      ],
+      "gorsel": [
+        {
+          "ad": "kupa_3_hatali_ornek.jpg",
+          "ana": true,
+          "sonuclar": [
+            {
+              "kontrol": "En küçük boyut",
+              "durum": "KALDI",
+              "mesaj": "560x840; en az 600x800 [satıcı panelinden doğrula]"
+            },
+            {
+              "kontrol": "En büyük boyut",
+              "durum": "GECTI",
+              "mesaj": "560x840; en çok 2000x2000 [satıcı panelinden doğrula]"
+            },
+            {
+              "kontrol": "Önerilen boyut",
+              "durum": "UYARI",
+              "mesaj": "560x840; önerilen 1200x1800"
+            },
+            {
+              "kontrol": "En-boy oranı",
+              "durum": "GECTI",
+              "mesaj": "560:840 = 0.667; beklenen 2:3 = 0.667 [satıcı panelinden doğrula]"
+            },
+            {
+              "kontrol": "Dosya boyutu",
+              "durum": "GECTI",
+              "mesaj": "57 KB; en çok 10 MB [satıcı panelinden doğrula]"
+            },
+            {
+              "kontrol": "Dosya türü",
+              "durum": "GECTI",
+              "mesaj": "JPEG; izinli: JPEG, PNG [satıcı panelinden doğrula]"
+            },
+            {
+              "kontrol": "Beyaz / açık zemin",
+              "durum": "GECTI",
+              "mesaj": "kenar bandı saf beyaz %99.2, beyaza yakın %100.0; ürün dışı alan saf beyaz %89.4 [satıcı panelinden doğrula]"
+            },
+            {
+              "kontrol": "Ürün doluluğu",
+              "durum": "GECTI",
+              "mesaj": "ürün uzun kenarda %85.7; önerimiz %80-90 (çok küçük ürün aramada kaybolur)"
+            },
+            {
+              "kontrol": "Yazı / logo / filigran",
+              "durum": "MANUEL",
+              "mesaj": "üründen ayrık 2 öğe bulundu (ilk: [15, 15, 252, 81]); yazı, fiyat, logo, filigran ya da çerçeve olabilir. Gözle bak"
+            }
+          ]
+        }
+      ]
+    },
+    "hepsiburada": {
+      "set": [
+        {
+          "kontrol": "Görsel sayısı (en çok)",
+          "durum": "GECTI",
+          "mesaj": "1 görsel; en çok 10 [satıcı panelinden doğrula]"
+        }
+      ],
+      "gorsel": [
+        {
+          "ad": "kupa_3_hatali_ornek.jpg",
+          "ana": true,
+          "sonuclar": [
+            {
+              "kontrol": "En küçük boyut",
+              "durum": "UYARI",
+              "mesaj": "560x840; en az 600x600 [satıcı panelinden doğrula]"
+            },
+            {
+              "kontrol": "Önerilen boyut",
+              "durum": "UYARI",
+              "mesaj": "560x840; önerilen 1500x1500 [satıcı panelinden doğrula]"
+            },
+            {
+              "kontrol": "En-boy oranı",
+              "durum": "UYARI",
+              "mesaj": "560:840 = 0.667; beklenen 1:1 = 1.000 (beyaz tuvale yerleştir: --hazirla) [satıcı panelinden doğrula]"
+            },
+            {
+              "kontrol": "Dosya boyutu",
+              "durum": "GECTI",
+              "mesaj": "57 KB; en çok 10 MB [satıcı panelinden doğrula]"
+            },
+            {
+              "kontrol": "Dosya türü",
+              "durum": "GECTI",
+              "mesaj": "JPEG; izinli: JPEG, PNG [satıcı panelinden doğrula]"
+            },
+            {
+              "kontrol": "Beyaz zemin (saf 255)",
+              "durum": "UYARI",
+              "mesaj": "kenar bandı saf beyaz %99.2, beyaza yakın %100.0; ürün dışı alan saf beyaz %89.4 [satıcı panelinden doğrula]"
+            },
+            {
+              "kontrol": "Ürün doluluğu",
+              "durum": "GECTI",
+              "mesaj": "ürün uzun kenarda %85.7 (alan %45.6); en az %85 [satıcı panelinden doğrula]"
+            },
+            {
+              "kontrol": "Yazı / logo / filigran",
+              "durum": "MANUEL",
+              "mesaj": "üründen ayrık 2 öğe bulundu (ilk: [15, 15, 252, 81]); yazı, fiyat, logo, filigran ya da çerçeve olabilir. Gözle bak"
+            }
+          ]
+        }
+      ]
+    },
+    "n11": {
+      "set": [
+        {
+          "kontrol": "Görsel sayısı (en çok)",
+          "durum": "GECTI",
+          "mesaj": "1 görsel; en çok 10 [satıcı panelinden doğrula]"
+        },
+        {
+          "kontrol": "Görsel sayısı (en az / önerilen)",
+          "durum": "UYARI",
+          "mesaj": "1 görsel; en az 6 [satıcı panelinden doğrula]"
+        }
+      ],
+      "gorsel": [
+        {
+          "ad": "kupa_3_hatali_ornek.jpg",
+          "ana": true,
+          "sonuclar": [
+            {
+              "kontrol": "Önerilen boyut",
+              "durum": "BILGI",
+              "mesaj": "560x840; önerilen 1200x1800 (bizim önerimiz)"
+            },
+            {
+              "kontrol": "Dosya boyutu",
+              "durum": "GECTI",
+              "mesaj": "57 KB; en çok 10 MB"
+            },
+            {
+              "kontrol": "Beyaz / açık zemin",
+              "durum": "GECTI",
+              "mesaj": "kenar bandı saf beyaz %99.2, beyaza yakın %100.0; ürün dışı alan saf beyaz %89.4 [satıcı panelinden doğrula]"
+            },
+            {
+              "kontrol": "Ürün doluluğu",
+              "durum": "GECTI",
+              "mesaj": "ürün uzun kenarda %85.7; önerimiz %80-90 (çok küçük ürün aramada kaybolur)"
+            },
+            {
+              "kontrol": "Yazı / logo / filigran",
+              "durum": "MANUEL",
+              "mesaj": "üründen ayrık 2 öğe bulundu (ilk: [15, 15, 252, 81]); yazı, fiyat, logo, filigran ya da çerçeve olabilir. Gözle bak"
+            }
+          ]
+        }
+      ]
+    },
+    "amazon": {
+      "set": [
+        {
+          "kontrol": "Görsel sayısı (en çok)",
+          "durum": "GECTI",
+          "mesaj": "1 görsel; en çok 9"
+        }
+      ],
+      "gorsel": [
+        {
+          "ad": "kupa_3_hatali_ornek.jpg",
+          "ana": true,
+          "sonuclar": [
+            {
+              "kontrol": "Uzun kenar",
+              "durum": "GECTI",
+              "mesaj": "uzun kenar 840 px; en az 500 px"
+            },
+            {
+              "kontrol": "En büyük boyut",
+              "durum": "GECTI",
+              "mesaj": "560x840; en çok 10000x10000"
+            },
+            {
+              "kontrol": "Önerilen boyut",
+              "durum": "BILGI",
+              "mesaj": "560x840; önerilen 2000x2000 (bizim önerimiz)"
+            },
+            {
+              "kontrol": "Yakınlaştırma",
+              "durum": "UYARI",
+              "mesaj": "uzun kenar 840 px; yakınlaştırma için 1000+ px önerilir"
+            },
+            {
+              "kontrol": "Dosya türü",
+              "durum": "GECTI",
+              "mesaj": "JPEG; izinli: GIF, JPEG, PNG, TIFF"
+            },
+            {
+              "kontrol": "Beyaz zemin (saf 255)",
+              "durum": "UYARI",
+              "mesaj": "kenar bandı saf beyaz %99.2, beyaza yakın %100.0; ürün dışı alan saf beyaz %89.4"
+            },
+            {
+              "kontrol": "Ürün doluluğu",
+              "durum": "GECTI",
+              "mesaj": "ürün uzun kenarda %85.7 (alan %45.6); en az %85"
+            },
+            {
+              "kontrol": "Yazı / logo / filigran",
+              "durum": "MANUEL",
+              "mesaj": "üründen ayrık 2 öğe bulundu (ilk: [15, 15, 252, 81]); yazı, fiyat, logo, filigran ya da çerçeve olabilir. Gözle bak"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

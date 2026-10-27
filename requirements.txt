@@ -1,0 +1,6 @@
+# Zorunlu değil (ilan üretimi yalnız Python standart kütüphanesiyle çalışır)
+# Görsel kontrolü için gerekli
+Pillow>=10.0
+numpy>=1.24
+# İsteğe bağlı
+PyYAML>=6.0      # yoksa dahili YAML okuyucu kullanılır

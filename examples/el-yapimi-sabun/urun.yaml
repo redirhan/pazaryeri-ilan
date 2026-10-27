@@ -1,0 +1,74 @@
+# KURGUSAL ÖRNEK: marka, barkod ve fiyatlar uydurmadır. Görseller: ../gorseller/LISANS.md
+# Durum: el yapımı sabun, Trendyol'da indirimde. Üstü çizili fiyat son 10 günün en düşüğü değil (düzeltilecek).
+marka: "Lavora Atölye"
+urun_tipi: "zeytinyağlı sabun"
+model: ""
+kategori: "Kozmetik & Kişisel Bakım > Banyo & Duş > Katı Sabun"
+kategori_grubu: kozmetik
+temel_ozellikler:
+  - "el yapımı"
+  - "soğuk işlem"
+  - "kokusuz"
+  - "hassas cilt için"
+renk: ""
+miktar: "100 g"
+model_kodu: "LVR-SBN-ZY100"
+barkod: "2000000100012"
+stok_kodu: "LVR-ZY100"
+stok: 40
+fiyat:
+  satis: 149.90
+  liste: 189.90
+  kdv: 20
+  para_birimi: TRY
+indirim:
+  onceki_fiyat: 189.90
+  indirimli_fiyat: 149.90
+  son_10_gun_en_dusuk: 169.90
+  baslangic: "2026-11-03"
+  bitis: "2026-11-10"
+  kanal: trendyol
+desi: 1
+hazirlik_gunu: 2
+ozellikler:
+  Ağırlık: "100 g"
+  İçindekiler: "Sodium Olivate, Sodium Cocoate, Aqua, Glycerin, Sodium Castorate"
+  Cilt Tipi: "Tüm cilt tipleri"
+  Koku: "Kokusuz (esans eklenmedi)"
+  Kullanım Alanı: "El ve vücut"
+  Form: "Katı kalıp"
+  Menşei: "Türkiye"
+  Raf Ömrü: "24 ay"
+one_cikanlar:
+  - "Soğuk işlemle küçük partilerde üretilir, elde kesilir; her kalıp yaklaşık 100 g"
+  - "Zeytinyağı ağırlıklı formül; esans ve renklendirici eklenmedi"
+  - "En az 6 hafta kürlenir; sert kalıp olduğu için yavaş erir"
+  - "Plastiksiz kraft kâğıt ambalajda gönderilir"
+  - "El ve vücut için; ilk kullanımda dirseğin iç kısmında dene"
+aciklama: |
+  Lavora Atölye zeytinyağlı sabunu, zeytinyağı ağırlıklı bir tarifle soğuk işlem yöntemiyle küçük partiler halinde üretilir ve elde kesilir. Her kalıp yaklaşık 100 gramdır; el yapımı olduğu için kalıplar arasında küçük şekil ve renk farkları olabilir.
+
+  Esans ve renklendirici eklemedik. Kokusuz bir sabun arayanlar ve sade içerik isteyenler için hazırlandı. Kalıplar en az 6 hafta kürlendiği için serttir ve günlük kullanımda yavaş erir.
+
+  Sabunu kuru bir sabunlukta tutman ömrünü uzatır. Islak zeminde bekleyen sabun yumuşar.
+kullanim: "Islak cilde köpürterek uygula, bol suyla durula. Göz çevresinde kullanma."
+bakim: "Kullanımdan sonra suyu süzülen bir sabunlukta, kuru yerde sakla."
+paket_icerigi:
+  - "1 adet zeytinyağlı sabun (yaklaşık 100 g)"
+  - "Kraft kâğıt ambalaj"
+uyarilar: "Haricen kullanılır. Göze kaçarsa bol suyla yıka. Tahriş olursa kullanmayı bırak."
+anahtar_kelimeler:
+  - "zeytinyağlı sabun"
+  - "el yapımı sabun"
+  - "sade sabun"
+  - "kokusuz sabun"
+  - "hassas cilt sabunu"
+  - "soğuk işlem sabun"
+  - "katı sabun"
+  - "banyo sabunu"
+  - "kalıp sabun"
+gorseller:
+  - "../gorseller/sabun_1_beyaz_fon.jpg"
+  - "../gorseller/sabun_2_kare_2000.jpg"
+  - "../gorseller/sabun_3_yasam.jpg"
+platformlar: [trendyol, hepsiburada, n11, amazon]
